@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Sarah & Michael | Wedding</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .wedding-card {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: fadeIn 0.8s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero {
+            background: linear-gradient(160deg, #ffdde1 0%, #ee9ca7 100%);
+            padding: 40px 25px 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::after {
+            content: "❤️";
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border: 3px solid white;
+        }
+        
+        .names {
+            font-size: 42px;
+            font-weight: 800;
+            color: #2d3748;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+        }
+        
+        .date-badge {
+            background: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            font-size: 24px;
+            font-weight: 700;
+            color: #764ba2;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 15px 0 5px;
+            border: 2px dashed #ee9ca7;
+        }
+        
+        .content {
+            padding: 35px 25px 25px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 20px;
+            transition: transform 0.2s;
+            border-left: 5px solid #ee9ca7;
+        }
+        
+        .section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #ffdde1;
+            padding-bottom: 10px;
+        }
+        
+        .section-title span {
+            font-size: 28px;
+        }
+        
+        .info-row {
+            display: flex;
+            margin-bottom: 12px;
+            align-items: flex-start;
+        }
+        
+        .info-icon {
+            width: 30px;
+            font-size: 20px;
+            color: #764ba2;
+        }
+        
+        .info-text {
+            flex: 1;
+            font-size: 17px;
+            color: #4a5568;
+            line-height: 1.5;
+        }
+        
+        .info-text strong {
+            color: #2d3748;
+            font-weight: 700;
+        }
+        
+        .badge {
+            background: #764ba2;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        
+        .rsvp-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 18px;
+            font-size: 22px;
+            font-weight: 700;
+            border-radius: 50px;
+            margin: 15px 0 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+            border: 2px solid white;
+            letter-spacing: 1px;
+        }
+        
+        .rsvp-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 25px rgba(102, 126, 234, 0.6);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+        
+        .rsvp-link {
+            text-align: center;
+            margin-top: 8px;
+            color: #718096;
+            font-size: 15px;
+            word-break: break-all;
+        }
+        
+        .rsvp-link a {
+            color: #764ba2;
+            text-decoration: none;
+            font-weight: 600;
+            background: #f0e7fe;
+            padding: 5px 10px;
+            border-radius: 30px;
+        }
+        
+        .registry-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .registry-item {
+            background: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-weight: 600;
+            color: #2d3748;
+            border: 2px solid #ffdde1;
+            font-size: 16px;
+        }
+        
+        .hashtag {
+            background: #2d3748;
+            color: white;
+            padding: 12px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin: 10px 0;
+            border: 3px dashed #ee9ca7;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 2px dashed #ffdde1;
+            color: #718096;
+            font-size: 15px;
+        }
+        
+        .footer a {
+            color: #764ba2;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .countdown {
+            background: #2d3748;
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .map-link {
+            display: inline-block;
+            background: #e2e8f0;
+            padding: 8px 20px;
+            border-radius: 30px;
+            color: #2d3748;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 10px;
+            border: 2px solid #ee9ca7;
+        }
+        
+        .map-link:hover {
+            background: #d1d9e6;
+        }
+        
+        @media (max-width: 400px) {
+            .names { font-size: 36px; }
+            .date-badge { font-size: 20px; }
+            .section { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="wedding-card">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="names">SARAH<br>& MICHAEL</div>
+            <div class="date-badge">08.15.2025</div>
+            <p style="color: #4a5568; font-size: 18px; margin-top: 10px; font-weight: 500;">Together with their families</p>
+        </div>
+        
+        <!-- Content Section -->
+        <div class="content">
+            
+            <!-- Countdown Timer -->
+            <div class="countdown" id="countdown">
+                Loading countdown...
+            </div>
+            
+            <!-- Ceremony Section -->
+            <div class="section">
+                <div class="section-title">
+                    <span>💒</span> CEREMONY
+                </div>
+                <div class="info-row">
+                    <div class="info-icon">⏰</div>
+                    <div class="info-text"><strong>4:00 PM</strong> (Please arrive by 3:45)</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon">📍</div>
+                    <div class="info-text">
+                        <strong>Sunset Gardens</strong><br>
+                        123 Main Street<br>
+                        Austin, TX 78701
+                    </div>
+                </div>
+                <a href="#" class="map-link">🗺️ Open in Maps</a>
+            </div>
+            
+            <!-- Reception Section -->
+            <div class="section">
+                <div class="section-title">
+                    <span>🥂</span> RECEPTION
+                </div>
+                <div class="info-row">
+                    <div class="info-icon">⏰</div>
+                    <div class="info-text"><strong>5:30 PM - Late</strong></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon">📍</div>
+                    <div class="info-text">
+                        <strong>The Grand Hall</strong><br>
+                        Same location as ceremony<br>
+                        Cocktail hour, dinner & dancing
+                    </div>
+                </div>
+                <div class="badge">📍 Same venue - no travel needed!</div>
+            </div>
+            
+            <!-- RSVP Section -->
+            <button class="rsvp-button" onclick="window.location.href='https://sarahandmichael.com/rsvp'">
+                ✅ CONFIRM ATTENDANCE
+            </button>
+            <div class="rsvp-link">
+                <span>🔗 </span><a href="#">sarahandmichael.com/rsvp</a>
+            </div>
+            <p style="text-align: center; color: #e53e3e; font-weight: 600; margin: 10px 0 0;">
+                ⚡ RSVP by June 1, 2025 ⚡
+            </p>
+            
+            <!-- Hotel Section -->
+            <div class="section">
+                <div class="section-title">
+                    <span>🏨</span> HOTEL BLOCK
+                </div>
+                <div class="info-row">
+                    <div class="info-icon">🏩</div>
+                    <div class="info-text">
+                        <strong>Marriott Downtown</strong><br>
+                        456 Commerce Street, Austin
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon">🔑</div>
+                    <div class="info-text">
+                        <strong>Code: WEDDING2025</strong><br>
+                        Special rate: $189/night
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon">📅</div>
+                    <div class="info-text">
+                        <strong>Book by July 15, 2025</strong>
+                    </div>
+                </div>
+                <a href="#" class="map-link" style="margin-right: 10px;">📞 (512) 555-0123</a>
+                <a href="#" class="map-link">🔗 Book Now</a>
+            </div>
+            
+            <!-- Schedule Section -->
+            <div class="section">
+                <div class="section-title">
+                    <span>📋</span> DAY-OF SCHEDULE
+                </div>
+                <div class="info-row">
+                    <div class="info-icon">3:45</div>
+                    <div class="info-text">Guest arrival</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon">4:00</div>
+                    <div class="info-text">Ceremony begins</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon">4:45</div>
+                    <div class="info-text">Family photos</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon">5:30</div>
+                    <div class="info-text">Cocktail hour</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon">6:30</div>
+                    <div class="info-text">Dinner served</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon">8:00</div>
+                    <div class="info-text">Dancing starts!</div>
+                </div>
+            </div>
+            
+            <!-- Registry Section -->
+            <div class="section">
+                <div class="section-title">
+                    <span>🎁</span> REGISTRY
+                </div>
+                <div class="registry-items">
+                    <span class="registry-item">🏠 Target</span>
+                    <span class="registry-item">📦 Amazon</span>
+                    <span class="registry-item">✈️ Honeyfund</span>
+                    <span class="registry-item">🍳 Crate & Barrel</span>
+                    <span class="registry-item">🛏️ Bed Bath & Beyond</span>
+                </div>
+                <p style="margin-top: 15px; color: #4a5568;">Your presence is the greatest gift, but if you wish to celebrate with a present, we're registered at the stores above.</p>
+            </div>
+            
+            <!-- Wedding Party (Optional) -->
+            <div class="section">
+                <div class="section-title">
+                    <span>👰‍♀️🤵‍♂️</span> WEDDING PARTY
+                </div>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <div style="flex: 1;">
+                        <p><strong>Bridesmaids</strong></p>
+                        <p>Emily Johnson - MOH<br>
+                        Jessica Smith<br>
+                        Rachel Green<br>
+                        Monica Geller</p>
+                    </div>
+                    <div style="flex: 1;">
+                        <p><strong>Groomsmen</strong></p>
+                        <p>David Smith - Best Man<br>
+                        James Brown<br>
+                        Ross Geller<br>
+                        Chandler Bing</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hashtag -->
+            <div class="hashtag">
+                #SmithGetsHitched
+            </div>
+            
+            <!-- FAQ / Contact -->
+            <div class="section">
+                <div class="section-title">
+                    <span>❓</span> QUESTIONS?
+                </div>
+                <div class="info-row">
+                    <div class="info-icon">📧</div>
+                    <div class="info-text">
+                        <a href="mailto:thesmiths@gmail.com" style="color: #764ba2; font-weight: 600; text-decoration: none;">thesmiths@gmail.com</a>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-icon">📱</div>
+                    <div class="info-text">
+                        Sarah: (512) 555-1234<br>
+                        Michael: (512) 555-5678
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Add to Calendar -->
+            <div style="display: flex; gap: 10px; margin: 20px 0;">
+                <a href="#" style="flex: 1; background: #2d3748; color: white; text-align: center; padding: 12px; border-radius: 30px; text-decoration: none; font-weight: 600;">📅 Google Cal</a>
+                <a href="#" style="flex: 1; background: #2d3748; color: white; text-align: center; padding: 12px; border-radius: 30px; text-decoration: none; font-weight: 600;">🍎 Apple Cal</a>
+            </div>
+            
+            <!-- Footer -->
+            <div class="footer">
+                <p>We can't wait to celebrate with you! ❤️</p>
+                <p style="margin-top: 8px;">Scan the QR code on your invitation to return here anytime</p>
+                <p style="margin-top: 15px; font-size: 13px;">Last updated: January 2025</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Countdown Timer Script -->
+    <script>
+        // Set the wedding date here (YYYY, MM-1, DD, HH, MM, SS)
+        const weddingDate = new Date(2025, 7, 15, 16, 0, 0); // August 15, 2025 4:00 PM
+        
+        function updateCountdown() {
+            const now = new Date();
+            const diff = weddingDate - now;
+            
+            if (diff < 0) {
+                document.getElementById('countdown').innerHTML = "🎉 We're married! 🎉";
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown').innerHTML = 
+                `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s until we say "I do!" ⏳`;
+        }
+        
+        // Update every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // Add smooth scroll for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
